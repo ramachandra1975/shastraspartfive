@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Continuity · Part V | Cultural Musings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c9a86a;--gold-bright:#e8cb8a;--crimson:#7a1f2b;--crimson-bright:#9c2c3a;
+  --bg:#0a080e;--panel:#13101a;--panel-2:#1a1525;--border:#3a2e44;
+  --text:#e0d8f0;--text-dim:#9a90b0;--text-faint:#6a6080;
+  --cream:#f0eaff;--saffron:#c878d0;--indigo:#6a4daa;
+  --jade:#4a3daa;--jade-bright:#8a78dd;--pearl:#d0c8e8;
+  --mod:#2a7a5a;--mod-bright:#4aaa80;--mod-dim:#1a4a38;
+  --teal:#2a8a8a;--teal-bright:#4ababa;
+  --fire:#d06030;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'EB Garamond',serif;font-size:18px;line-height:1.8;
+  background-image:
+    radial-gradient(ellipse at top left,rgba(42,122,90,0.08),transparent 55%),
+    radial-gradient(ellipse at bottom right,rgba(106,77,170,0.06),transparent 55%);
+}
+.dn{font-family:'Noto Serif Devanagari',serif;}
+h1,h2,h3,h4{font-family:'Cinzel',serif;letter-spacing:0.02em;}
+.mono{font-family:'Source Code Pro',monospace;font-size:0.82em;}
+.app{display:flex;min-height:100vh;}
+.sidebar{width:290px;flex-shrink:0;background:linear-gradient(180deg,#0d0a14,#070509);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 0 40px;}
+.sidebar::-webkit-scrollbar{width:5px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.brand{padding:0 22px 20px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.brand .om{font-size:32px;color:var(--mod-bright);display:block;margin-bottom:6px;}
+.brand h1{font-size:13px;color:var(--cream);line-height:1.4;letter-spacing:0.04em;}
+.brand p{font-family:'Cormorant Garamond',serif;font-size:11.5px;color:var(--text-faint);margin-top:5px;font-style:italic;}
+.wp-badge{margin:0 22px 16px;padding:10px 14px;background:rgba(42,122,90,0.1);border:1px solid rgba(42,122,90,0.3);border-radius:4px;}
+.wp-badge .wl{font-family:'Cinzel';font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mod-bright);margin-bottom:5px;}
+.wp-badge p{font-size:12px;color:var(--text-faint);line-height:1.5;}
+.navgroup{margin-bottom:4px;}
+.navgroup .label{font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-faint);padding:10px 22px 4px;}
+.navlink{display:block;padding:7px 22px;color:var(--text-dim);text-decoration:none;font-size:13px;border-left:2px solid transparent;transition:all .15s ease;cursor:pointer;line-height:1.45;}
+.navlink:hover{color:var(--mod-bright);background:rgba(42,122,90,0.07);}
+.navlink.active{color:var(--mod-bright);border-left-color:var(--mod);background:rgba(42,122,90,0.12);}
+.series-nav{margin:14px 22px 0;padding:13px 15px;background:rgba(42,122,90,0.05);border:1px solid var(--border);border-radius:5px;}
+.series-nav .sn-label{font-family:'Cinzel';font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:7px;}
+.series-nav a{display:block;font-size:12px;color:var(--text-faint);text-decoration:none;padding:3px 0;transition:color .15s;}
+.series-nav a:hover{color:var(--mod-bright);}
+.series-nav a.current{color:var(--mod-bright);font-weight:600;}
+.main{flex:1;min-width:0;}
+.breadcrumb{position:sticky;top:0;z-index:30;background:rgba(10,8,14,0.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:11px 44px;font-size:12.5px;color:var(--text-faint);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.breadcrumb span.cur{color:var(--mod-bright);}
+.breadcrumb .wp-label{margin-left:auto;font-family:'Cinzel';font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mod-bright);padding:2px 8px;border:1px solid rgba(42,122,90,0.4);border-radius:2px;}
+.tabbar{position:sticky;top:38px;z-index:29;display:flex;overflow-x:auto;background:var(--panel);border-bottom:1px solid var(--border);scrollbar-width:thin;scrollbar-color:var(--mod-bright) var(--panel);}
+.tabbar::-webkit-scrollbar{height:3px;}
+.tabbar::-webkit-scrollbar-thumb{background:var(--mod);border-radius:4px;}
+.tabbtn{flex-shrink:0;padding:10px 16px;font-size:12.5px;color:var(--text-dim);background:none;border:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;font-family:'EB Garamond',serif;letter-spacing:0.03em;}
+.tabbtn:hover{color:var(--mod-bright);}
+.tabbtn.active{color:var(--mod-bright);border-bottom-color:var(--mod);background:rgba(42,122,90,0.08);}
+.section{padding:54px 60px 76px;max-width:1180px;}
+.section.hidden{display:none;}
+.wp-header{border:1px solid rgba(42,122,90,0.3);border-radius:6px;padding:28px 32px;margin-bottom:36px;background:linear-gradient(135deg,rgba(42,122,90,0.07),rgba(106,77,170,0.05));}
+.wp-header .series-tag{font-family:'Cinzel';font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mod-bright);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.wp-header .series-tag::before{content:'';width:24px;height:1px;background:var(--mod);}
+.wp-header h2{font-size:27px;color:var(--cream);line-height:1.2;margin-bottom:8px;}
+.wp-header .dn-title{font-family:'Noto Serif Devanagari';font-size:23px;color:var(--mod-bright);display:block;margin-bottom:10px;}
+.wp-meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+.wp-meta-item{font-size:12.5px;color:var(--text-faint);}
+.wp-meta-item strong{color:var(--text-dim);font-weight:500;}
+.abstract{font-family:'Cormorant Garamond';font-size:17.5px;color:var(--text-dim);font-style:italic;line-height:1.7;margin-bottom:8px;}
+.section-heading{font-family:'Cinzel';font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin:38px 0 16px;display:flex;align-items:center;gap:10px;}
+.section-heading::before{content:'';width:32px;height:1px;background:var(--saffron);flex-shrink:0;}
+.section-heading .num{font-size:10px;color:var(--text-faint);border:1px solid var(--border);padding:2px 7px;border-radius:2px;font-family:'Source Code Pro',monospace;}
+h2.article-title{font-size:24px;color:var(--cream);margin-bottom:14px;line-height:1.3;}
+h3.sub-title{font-family:'Cinzel';font-size:16px;color:var(--mod-bright);margin:28px 0 12px;}
+h4.sub-sub{font-family:'Cinzel';font-size:13.5px;color:var(--text);margin:20px 0 8px;}
+p{margin-bottom:15px;}
+p:last-child{margin-bottom:0;}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:22px 26px;margin-bottom:20px;}
+.panel.mod{border-left:3px solid var(--mod);}
+.panel.case-study{border-left:3px solid var(--jade-bright);background:rgba(74,61,170,0.05);}
+.panel.research{border-left:3px solid rgba(42,122,90,0.8);}
+.panel.neovedanta{border-left:3px solid var(--crimson-bright);background:rgba(122,31,43,0.05);}
+.panel.living{border-left:3px solid var(--gold);background:rgba(201,168,106,0.04);}
+.panel.western{border-left:3px solid var(--teal-bright);background:rgba(42,138,138,0.04);}
+.panel h3{color:var(--mod-bright);font-size:15.5px;margin-bottom:12px;letter-spacing:0.02em;}
+.panel.case-study h3{color:var(--jade-bright);}
+.panel.neovedanta h3{color:var(--crimson-bright);}
+.panel.living h3{color:var(--gold-bright);}
+.panel.western h3{color:var(--teal-bright);}
+.cs-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.cs-num{font-family:'Cinzel';font-size:22px;color:var(--jade-bright);flex-shrink:0;line-height:1;margin-top:2px;}
+.cs-meta{flex:1;}
+.cs-meta .cs-label{font-family:'Cinzel';font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--jade);margin-bottom:4px;}
+.cs-meta h3{color:var(--jade-bright);font-size:16px;margin-bottom:0;}
+.cs-meta .cs-sub{font-size:13px;color:var(--text-faint);margin-top:3px;}
+.sanskrit-block{font-family:'Noto Serif Devanagari';font-size:20px;color:var(--cream);background:var(--panel-2);border-left:3px solid var(--mod);padding:14px 22px;margin:18px 0;border-radius:0 4px 4px 0;line-height:1.9;}
+.iast{font-family:'Cormorant Garamond';font-style:italic;color:var(--mod-bright);font-size:16px;}
+.gloss{color:var(--text-dim);font-size:14.5px;margin-top:6px;}
+table.chron{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px;}
+table.chron thead tr{background:rgba(42,122,90,0.12);}
+table.chron th{text-align:left;color:var(--mod-bright);font-family:'Cinzel';font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;padding:10px 13px;border-bottom:2px solid var(--mod);}
+table.chron td{padding:9px 13px;border-bottom:1px solid rgba(58,46,68,0.45);color:var(--text-dim);vertical-align:top;}
+table.chron td.era{color:var(--saffron);font-family:'Cinzel';font-size:12px;white-space:nowrap;}
+table.chron td.shastra{color:var(--mod-bright);font-weight:600;}
+table.chron td.note{font-size:13.5px;color:var(--text-faint);}
+table.compare{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;}
+table.compare th{background:rgba(42,122,90,0.1);color:var(--mod-bright);font-family:'Cinzel';font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 12px;text-align:left;}
+table.compare td{padding:8px 12px;border-bottom:1px solid rgba(58,46,68,0.4);color:var(--text-dim);vertical-align:top;}
+blockquote{border-left:3px solid var(--mod-bright);padding:10px 20px;margin:18px 0;font-family:'Cormorant Garamond';font-style:italic;font-size:18px;color:var(--text);background:rgba(42,122,90,0.04);}
+blockquote cite{display:block;margin-top:7px;font-size:12.5px;color:var(--text-faint);font-style:normal;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr;}}
+.callout{border:1px solid var(--mod);border-radius:5px;padding:18px 22px;margin:20px 0;background:rgba(42,122,90,0.04);}
+.callout .cl-head{font-family:'Cinzel';font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mod-bright);margin-bottom:7px;}
+.callout.crimson{border-color:var(--crimson-bright);background:rgba(122,31,43,0.04);}
+.callout.crimson .cl-head{color:var(--crimson-bright);}
+.callout.gold{border-color:var(--gold);background:rgba(201,168,106,0.04);}
+.callout.gold .cl-head{color:var(--gold-bright);}
+.callout.jade{border-color:var(--jade-bright);background:rgba(74,61,170,0.04);}
+.callout.jade .cl-head{color:var(--jade-bright);}
+.callout.teal{border-color:var(--teal-bright);background:rgba(42,138,138,0.04);}
+.callout.teal .cl-head{color:var(--teal-bright);}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0;}
+.stat-card{flex:1;min-width:130px;background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:16px 18px;text-align:center;}
+.stat-card .sv{font-family:'Cinzel';font-size:26px;color:var(--mod-bright);line-height:1;}
+.stat-card .sl{font-size:12px;color:var(--text-faint);margin-top:5px;line-height:1.4;}
+.timeline{position:relative;padding-left:34px;margin:22px 0;}
+.timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--mod),var(--teal-bright),transparent);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item::before{content:'';position:absolute;left:-29px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--mod);border:2px solid var(--mod-bright);}
+.tl-item.milestone::before{background:var(--mod-bright);width:15px;height:15px;left:-31px;}
+.tl-date{font-family:'Cinzel';font-size:11px;color:var(--saffron);letter-spacing:0.08em;margin-bottom:3px;}
+.tl-title{font-family:'Cinzel';font-size:14px;color:var(--cream);margin-bottom:5px;}
+.tl-body{font-size:14.5px;color:var(--text-dim);line-height:1.6;}
+.figure-card{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:18px 20px;}
+.figure-card .fc-dates{font-family:'Cinzel';font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px;}
+.figure-card .fc-name{font-family:'Cinzel';font-size:14px;color:var(--cream);margin-bottom:3px;}
+.figure-card .fc-trad{font-size:12px;color:var(--mod-bright);margin-bottom:8px;}
+.figure-card p{font-size:13.5px;color:var(--text-dim);line-height:1.55;}
+.figure-card.neo{border-top:2px solid var(--crimson-bright);}
+.figure-card.neo .fc-dates,.figure-card.neo .fc-trad{color:var(--crimson-bright);}
+.figure-card.yoga{border-top:2px solid var(--mod-bright);}
+.figure-card.yoga .fc-dates,.figure-card.yoga .fc-trad{color:var(--mod-bright);}
+.figure-card.west{border-top:2px solid var(--teal-bright);}
+.figure-card.west .fc-dates,.figure-card.west .fc-trad{color:var(--teal-bright);}
+.figure-card.cont{border-top:2px solid var(--gold-bright);}
+.figure-card.cont .fc-dates,.figure-card.cont .fc-trad{color:var(--gold-bright);}
+.footnotes{margin-top:36px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--text-faint);}
+.footnotes h4{font-family:'Cinzel';font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;}
+.fn-item{margin-bottom:6px;padding-left:20px;text-indent:-20px;line-height:1.55;}
+.fn-num{color:var(--saffron);font-family:'Source Code Pro',monospace;font-size:11px;margin-right:6px;}
+.tag{display:inline-block;font-size:10px;letter-spacing:0.05em;text-transform:uppercase;padding:2px 7px;border-radius:3px;border:1px solid var(--border);color:var(--text-faint);margin-right:5px;margin-bottom:3px;}
+.tag.mod{border-color:var(--mod);color:var(--mod-bright);}
+.tag.neo{border-color:var(--crimson-bright);color:var(--crimson-bright);}
+.tag.west{border-color:var(--teal-bright);color:var(--teal-bright);}
+.tag.living{border-color:var(--gold);color:var(--gold-bright);}
+.tag.yoga{border-color:var(--jade-bright);color:var(--jade-bright);}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;margin-top:52px;padding-top:22px;border-top:1px solid var(--border);}
+.fn-btn{color:var(--mod-bright);text-decoration:none;font-size:13.5px;cursor:pointer;font-family:'Cinzel';letter-spacing:0.04em;}
+.fn-btn:hover{color:var(--cream);}
+/* Series-complete banner */
+.series-complete{border:1px solid var(--mod-bright);border-radius:6px;padding:24px 28px;margin:32px 0;background:linear-gradient(135deg,rgba(42,122,90,0.1),rgba(106,77,170,0.05));text-align:center;}
+.series-complete .sc-label{font-family:'Cinzel';font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mod-bright);margin-bottom:10px;}
+.series-complete h3{font-family:'Cinzel';font-size:18px;color:var(--cream);margin-bottom:8px;}
+.series-complete p{font-family:'Cormorant Garamond';font-size:16px;color:var(--text-dim);font-style:italic;max-width:640px;margin:0 auto;}
+.series-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px;}
+.series-links a{font-family:'Cinzel';font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border:1px solid var(--border);border-radius:3px;color:var(--text-faint);text-decoration:none;transition:all .15s;}
+.series-links a:hover{border-color:var(--mod-bright);color:var(--mod-bright);}
+@media(max-width:860px){.sidebar{position:fixed;left:-290px;transition:left .2s;z-index:50;}.sidebar.open{left:0;}.section{padding:30px 16px 60px;}.wp-header{padding:18px 16px;}}
+.menu-toggle{display:none;}
+@media(max-width:860px){.menu-toggle{display:block;position:fixed;bottom:20px;right:20px;z-index:60;width:46px;height:46px;border-radius:50%;background:var(--mod);color:var(--cream);border:none;font-size:20px;cursor:pointer;}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav class="sidebar" id="sidebar">
+  <div class="brand">
+    <span class="om dn">ॐ</span>
+    <h1>शास्त्रोद्भवः<br><span style="font-size:11px;color:var(--text-dim);font-weight:400;">The Birth &amp; Evolution of the Śāstras</span></h1>
+    <p>culturalmusings.com · Research White Paper Series</p>
+  </div>
+  <div class="wp-badge">
+    <div class="wl">White Paper · Part V of V</div>
+    <p>Modern Continuity — The living śāstric tradition from colonial encounter to the present</p>
+  </div>
+  <div class="navgroup">
+    <div class="label">भाग ५ · Part V Contents</div>
+    <a class="navlink" data-target="s-abstract5">Abstract &amp; Overview</a>
+    <a class="navlink" data-target="s-colonial">§1 · The Colonial Encounter — Orientalism &amp; the Śāstras</a>
+    <a class="navlink" data-target="s-neovedanta">§2 · Neo-Vedānta — The Modern Synthesis</a>
+    <a class="navlink" data-target="s-yoga-modern">§3 · Yoga as Global Śāstra — Systematisation &amp; Transmission</a>
+    <a class="navlink" data-target="s-pathashala">§4 · The Pathāśālā System — Continuity of Classical Learning</a>
+    <a class="navlink" data-target="s-western">§5 · Western Encounter — Indology, Phenomenology &amp; Dialogue</a>
+    <a class="navlink" data-target="s-living">§6 · Living Traditions — The Śāstras in Contemporary Practice</a>
+    <a class="navlink" data-target="s-synthesis5">§7 · The Unfinished Śāstra — What Remains Open</a>
+    <a class="navlink" data-target="s-chrono5">§8 · Master Chronology V &amp; Series Conclusion</a>
+  </div>
+  <div class="series-nav">
+    <div class="sn-label">Five‑Part Series</div>
+    <a href="shastra-series-part1.html">Part I · Origins &amp; Vedic Śāstras</a>
+    <a href="shastra-series-part2.html">Part II · Classical Śāstras</a>
+    <a href="shastra-series-part3.html">Part III · Tantric &amp; Āgamic Śāstras</a>
+    <a href="shastra-series-part4.html">Part IV · Medieval Synthesis</a>
+    <a href="shastra-series-part5.html" class="current">Part V · Modern Continuity</a>
+  </div>
+</nav>
+<main class="main">
+<div class="breadcrumb">
+  culturalmusings.com <span style="color:var(--border)">/</span> शास्त्रोद्भवः <span style="color:var(--border)">/</span>
+  <span class="cur" id="crumb">Abstract</span>
+  <span class="wp-label">White Paper · Part V</span>
+</div>
+<div class="tabbar" id="tabbar">
+  <button class="tabbtn" data-target="s-abstract5">Abstract</button>
+  <button class="tabbtn" data-target="s-colonial">§1 Colonial</button>
+  <button class="tabbtn" data-target="s-neovedanta">§2 Neo-Vedānta</button>
+  <button class="tabbtn" data-target="s-yoga-modern">§3 Yoga</button>
+  <button class="tabbtn" data-target="s-pathashala">§4 Pathāśālā</button>
+  <button class="tabbtn" data-target="s-western">§5 Western</button>
+  <button class="tabbtn" data-target="s-living">§6 Living</button>
+  <button class="tabbtn" data-target="s-synthesis5">§7 Open</button>
+  <button class="tabbtn" data-target="s-chrono5">§8 Chronology</button>
+</div>
+<div id="sections-root">
+
+<!-- ABSTRACT -->
+<section class="section" id="s-abstract5">
+  <div class="wp-header">
+    <div class="series-tag">Research Paper · Part V of V · Cultural Musings — Śāstrodbhavaḥ Series</div>
+    <span class="dn-title">शास्त्रस्य जीवनम् — The Life of the Śāstra</span>
+    <h2>Modern Continuity: The Living Śāstric Tradition from Colonial Encounter to the Present</h2>
+    <div class="wp-meta">
+      <div class="wp-meta-item"><strong>Period Covered:</strong> c. 1750 CE – Present</div>
+      <div class="wp-meta-item"><strong>Traditions:</strong> Neo-Vedānta, modern Yoga, living pathāśālā network, Carnatic &amp; Nāṭyaśāstra revival, contemporary Tantra scholarship</div>
+      <div class="wp-meta-item"><strong>Key Figures:</strong> Rammohun Roy, Vivekananda, Aurobindo, T. Krishnamacharya, B.K.S. Iyengar, Pattabhi Jois, Ravi Shankar, T.N. Krishnaswami, S. Radhakrishnan</div>
+      <div class="wp-meta-item"><strong>Series Part:</strong> V of V · Final</div>
+    </div>
+  </div>
+
+  <div class="section-heading"><span class="num">0.1</span>Abstract</div>
+  <p class="abstract">The śāstric tradition does not end with the medieval synthesis examined in Part IV. It enters, from the 18th century onward, its most complex and in some respects most challenging phase: the encounter with European colonialism and its intellectual apparatus (Orientalism, comparative philology, the academic study of religion), and the responses to that encounter that produced the modern reformulations of the tradition. This Part examines five distinct responses: the Neo-Vedānta synthesis that universalised Advaita for a global audience; the global transmission of Yoga as a systematised physical-spiritual discipline; the quiet persistence of the traditional pathāśālā network as the transmission backbone of Sanskrit learning; the Western scholarly engagement that produced Indology and its critiques; and the contemporary living practice of the traditions examined in Parts I–IV. The final section asks what remains genuinely open in the śāstric tradition — where the tradition is still actively producing new śāstras — and proposes that the tradition's defining capacity for systematic creative response to new problems is not exhausted.</p>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="sv">300M+</div><div class="sl">Practitioners of Yoga globally by 2020 — the most globally diffused Indian śāstric discipline</div></div>
+    <div class="stat-card"><div class="sv">c.1500</div><div class="sl">Traditional Sanskrit pathāśālās still operating in India as of 2020, preserving unbroken oral transmission</div></div>
+    <div class="stat-card"><div class="sv">1893</div><div class="sl">Year of Vivekananda's Chicago address — the single most consequential public event in the global transmission of Vedāntic thought</div></div>
+    <div class="stat-card"><div class="sv">72</div><div class="sl">Mēḷakarta rāgas systematised by Venkatamakhin (c. 1620) — the Carnatic śāstra still taught in living gurukulam tradition</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="cl-head">The Central Question of Part V</div>
+    <p style="font-size:15.5px;">Is the śāstric tradition a historical phenomenon that reached its productive peak in the classical and medieval periods and is now in a phase of preservation and transmission? Or is it a living tradition still capable of generating new systematic knowledge in śāstric form? Part V argues for the second position — with precision about what "new śāstra" means in a post-colonial, globalised intellectual context, and with honesty about the genuine threats the tradition faces. The śāstra is not merely an archive; it is, in multiple specific domains, still the most accurate available description of its subject matter.</p>
+  </div>
+
+  <div class="footer-nav">
+    <a class="fn-btn" href="shastra-series-part4.html">← Part IV: Medieval Synthesis</a>
+    <span class="fn-btn" onclick="showSection('s-colonial')">Next: §1 Colonial Encounter →</span>
+  </div>
+</section>
+
+<!-- §1 COLONIAL -->
+<section class="section hidden" id="s-colonial">
+  <div class="section-heading"><span class="num">§ 1</span>The Colonial Encounter</div>
+  <h2 class="article-title">Orientalism and the Śāstras — When the Archive Became an Object of Study</h2>
+  <p>The encounter between the Indian śāstric tradition and European colonial power from the late 18th century onward produced a profound and structurally unprecedented challenge: for the first time in its history, the śāstric tradition was subjected to systematic external analysis by scholars operating from outside the tradition's own epistemological and institutional framework. The Orientalist project — the European scholarly study of Asian texts, languages, and cultures — produced results of extraordinary importance for the preservation and global dissemination of Sanskrit learning, while simultaneously imposing interpretive frameworks that distorted the tradition's own self-understanding in ways that have taken over a century to begin to disentangle.</p>
+
+  <div class="panel mod">
+    <h3>The Orientalist Achievement — What It Preserved</h3>
+    <p>The work of William Jones (1746–1794), H.H. Wilson (1786–1860), Max Müller (1823–1900), and their contemporaries and successors produced, across the 19th century, the single most comprehensive systematic inventory and publication of Sanskrit manuscripts in the tradition's history. The Sacred Books of the East series (50 volumes, 1879–1910), the various regional manuscript surveys, and the publication of critical editions of major texts represent a genuine intellectual achievement that the tradition itself had not managed: the creation of a comprehensive, publicly accessible, cross-referenced corpus of primary texts.</p>
+    <table class="compare" style="margin-top:14px;">
+      <thead><tr><th>Achievement</th><th>Significance for the Tradition</th><th>The Distortion Introduced</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Critical editions of major texts</strong></td>
+          <td>Made texts accessible beyond the manuscript-holding institutions; created stable reference texts for comparison across schools</td>
+          <td>The critical edition method (establishing an "original" text from manuscript variants) imports an assumption — that texts have single original forms — that is often at odds with the oral, performative, and regionally variable character of śāstric transmission</td>
+        </tr>
+        <tr>
+          <td><strong>Comparative philology / Indo-European linguistics</strong></td>
+          <td>Demonstrated Sanskrit's place in the family of languages to which Greek, Latin, Persian, and Germanic languages belong — validating Sanskrit's status as a primary object of linguistic science</td>
+          <td>Produced the "Aryan migration" framework and its racialised derivatives, which imposed 19th-century European nationalist categories onto Indian textual history in ways that generated severe political consequences</td>
+        </tr>
+        <tr>
+          <td><strong>Systematic translation into European languages</strong></td>
+          <td>Made Vedānta, Yoga, and Buddhist philosophy accessible to European intellectual culture for the first time — directly enabling Schopenhauer, Nietzsche, and the Theosophical movement</td>
+          <td>The translations systematically assimilated Indian philosophical categories to European counterparts (ātman = soul, brahman = God, māyā = illusion) — mappings that are sometimes useful but consistently suppress the precise technical meanings that distinguish Indian philosophical positions from their European analogues</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·19</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 19 · Colonial Impact</div>
+        <h3>The Bengal Renaissance — Rammohun Roy and the First Modern Śāstric Response</h3>
+        <div class="cs-sub">The earliest systematic Indian reformulation of the tradition in response to colonial encounter (c. 1815–1833)</div>
+      </div>
+    </div>
+    <p>Rammohun Roy (1772–1833) occupies a unique position in the history of the śāstric tradition: he was the first figure to deploy the śāstric method — systematic argument from canonical texts — in explicit response to the challenge posed by Christian missionaries and colonial administration to the legitimacy of the tradition. His strategy was structurally conservative (appeal to the Upaniṣads as the "true" Vedic teaching) and socially radical (using that appeal to attack both sati and image-worship as deviations from authentic Vedic religion).</p>
+    <div class="callout">
+      <div class="cl-head">The Structural Novelty of Roy's Argument</div>
+      <p style="font-size:14.5px;">Roy's Vedāntic reformism is the first instance in the tradition of what we may call <em>apologetic śāstra</em> — systematic argumentation from within the tradition directed not at rival Indian schools but at the external challenge of Christian theology and colonial law. The pūrvapakṣa is no longer Mīmāṃsā or Viśiṣṭādvaita; it is the Church Missionary Society. The uttarapakṣa is no longer a new bhāṣya on the Brahmasūtras; it is a pamphlet in English and Bengali addressed to a literate colonial public. The śāstric method had found a new medium and a new adversary — and it adapted with remarkable agility.</p>
+    </div>
+    <p>Roy's establishment of the Brahmo Samaj (1828) institutionalised this new form of śāstric response: a congregation-based religious organisation modelled partly on Protestant Christian forms but grounded in Upaniṣadic theology, practising a reformed, image-free Vedāntic worship. This is a case of institutional śāstrification: devotional practice systematised into organisational form under the pressure of colonial encounter.</p>
+  </div>
+
+  <h3 class="sub-title">1.1 Dayananda Sarasvatī and the Ārya Samāj — A Different Response</h3>
+  <p>Where Rammohun Roy's response to colonial encounter was synthetic — drawing selectively on both Vedāntic tradition and Protestant organisational models — Dayananda Sarasvatī's (1824–1883) response was purificatory. His <span class="iast">Satyārtha Prakāś</span> ("The Light of Truth," 1875) proposed returning to the Vedas alone as the authoritative source of dharma, rejecting not only colonial Christianity but the entire post-Vedic accumulation — Purāṇas, Tantras, image-worship, the caste system as socially instantiated — as corruptions of the original Vedic teaching. The Ārya Samāj that institutionalised this position became the most socially reformist Hindu organisation of the colonial period, with profound consequences for 20th-century Indian nationalism and religious identity.</p>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-abstract5')">← Abstract</span>
+    <span class="fn-btn" onclick="showSection('s-neovedanta')">Next: §2 Neo-Vedānta →</span>
+  </div>
+</section>
+
+<!-- §2 NEO-VEDANTA -->
+<section class="section hidden" id="s-neovedanta">
+  <div class="section-heading"><span class="num">§ 2</span>Neo-Vedānta</div>
+  <h2 class="article-title">Neo-Vedānta — The Global Synthesis and Its Śāstric Credentials</h2>
+  <p>The term <span class="iast">Neo-Vedānta</span> designates the reformulation of Advaita Vedānta — principally by Vivekananda, Aurobindo, and Radhakrishnan — that produced what is now the most globally recognised form of Indian philosophy. Neo-Vedānta differs from classical Advaita in specific, technically identifiable ways, and assessing those differences precisely is a necessary precondition for understanding both what Neo-Vedānta achieves and what it loses in the reformulation.</p>
+
+  <div class="grid3">
+    <div class="figure-card neo">
+      <div class="fc-dates">1863–1902</div>
+      <div class="fc-name">Swami Vivekananda</div>
+      <div class="fc-trad">Vedānta as Universal Religion</div>
+      <p>Student of Ramakrishna Paramahaṃsa; founded Ramakrishna Mission (1897). Chicago Parliament of Religions address (1893) — first mass presentation of Advaita Vedānta to a Western audience. Argues that all religions are paths to the same truth (Brahman); that Advaita is the highest philosophical framework for this universalism; that karma yoga, jñāna yoga, bhakti yoga, and rāja yoga are four equally valid paths suited to four temperamental types. The most consequential single figure in the global transmission of the tradition.</p>
+    </div>
+    <div class="figure-card neo">
+      <div class="fc-dates">1872–1950</div>
+      <div class="fc-name">Śrī Aurobindo</div>
+      <div class="fc-trad">Integral Vedānta — Evolution of Consciousness</div>
+      <p>ICS officer turned revolutionary turned spiritual philosopher. His <em>The Life Divine</em> (1939–40) presents what he calls "Integral Advaita" — a reformulation that incorporates evolutionary cosmology (influenced partly by Bergson) into the Vedāntic framework: spirit does not merely transcend matter but is evolving through matter toward a supramental consciousness. The most philosophically ambitious Neo-Vedānta system; contested by traditionalists as departing from śāṅkara's position on the world's unreality.</p>
+    </div>
+    <div class="figure-card neo">
+      <div class="fc-dates">1888–1975</div>
+      <div class="fc-name">S. Radhakrishnan</div>
+      <div class="fc-trad">Vedānta as Academic Philosophy</div>
+      <p>Philosopher and President of India. His <em>Indian Philosophy</em> (2 vols., 1923–27) and <em>The Principal Upanishads</em> (1953) established Vedānta as a subject of serious academic philosophy in Western universities. Argues that Advaita Vedānta is not merely a sectarian Indian teaching but the highest available philosophical formulation of the perennial philosophy underlying all religious traditions. The most academically influential Neo-Vedāntin; criticised for assimilating Śaṅkara to a Western philosophical idealism he would not recognise.</p>
+    </div>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·20</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 20 · Doctrinal Analysis</div>
+        <h3>Classical Advaita vs. Neo-Vedānta — Five Precise Differences</h3>
+        <div class="cs-sub">Where the modern reformulation departs from Śaṅkara's own position</div>
+      </div>
+    </div>
+    <table class="compare">
+      <thead><tr><th>Dimension</th><th>Classical Advaita (Śaṅkara)</th><th>Neo-Vedānta (Vivekananda / Radhakrishnan)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>The world's status</strong></td>
+          <td>Vyāvahārika (conventionally real) but not pāramārthika (ultimately real); the world as world is a superimposition (adhyāsa) on Brahman due to avidyā</td>
+          <td>Tends toward a more positive affirmation of the world as divine manifestation; Vivekananda's "practical Vedānta" valorises worldly action as worship; Aurobindo makes the world's transformation the goal of spiritual practice</td>
+        </tr>
+        <tr>
+          <td><strong>Social engagement</strong></td>
+          <td>Śaṅkara's system is primarily soteriological — the goal is individual liberation (mukti), not social transformation; dharmaśāstra governs the social domain separately</td>
+          <td>Service to others as worship of the divine in man (daridranārāyaṇa — "the poor man is Nārāyaṇa") — a social ethics derived from Advaita that Śaṅkara himself does not articulate; influenced by Protestant social gospel</td>
+        </tr>
+        <tr>
+          <td><strong>Yoga paths</strong></td>
+          <td>Jñāna yoga (the path of knowledge) is the primary means of liberation; karma and bhakti are preparatory disciplines for the intellectually less qualified</td>
+          <td>The four yogas (karma, jñāna, bhakti, rāja) are presented as four equally valid paths suited to different temperamental types — a democratic pluralism of paths that Śaṅkara's hierarchy does not support</td>
+        </tr>
+        <tr>
+          <td><strong>Relation to other religions</strong></td>
+          <td>Other religious systems are positioned within the Vedāntic hierarchy — at best lower rungs on the same ladder; the Upaniṣadic teaching is the summit of available human knowledge</td>
+          <td>All religions are valid paths to the same truth; Advaita is the philosophical framework that explains why they are all valid, not the teaching that supersedes them; explicit religious universalism</td>
+        </tr>
+        <tr>
+          <td><strong>The guru–disciple relationship</strong></td>
+          <td>Dīkṣā (initiation) and guru-transmission are prerequisites for the higher teachings; the tradition is not publicly accessible but restricted to qualified initiates</td>
+          <td>Public teaching, mass lectures, printed books, and institutional instruction replace the dīkṣā requirement — a democratisation of access that Śaṅkara would have considered inappropriate to the depth of the teaching</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top:14px;">
+      <div class="cl-head">Assessing Neo-Vedānta as Śāstra</div>
+      <p style="font-size:14.5px;">The five differences above do not constitute a refutation of Neo-Vedānta — they constitute a precise characterisation of it as a distinct reformulation. Neo-Vedānta is best understood not as "classical Advaita simplified for a modern audience" but as a genuinely new position that shares Advaita's non-dual ontology while systematically transforming its soteriological, social, and institutional dimensions in response to the specific challenges of colonial modernity. Whether this transformation constitutes creative adaptation or dilution depends on what one takes the tradition's core to be — a śāstric question that the tradition itself does not unanimously answer.</p>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-colonial')">← §1 Colonial</span>
+    <span class="fn-btn" onclick="showSection('s-yoga-modern')">Next: §3 Yoga →</span>
+  </div>
+</section>
+
+<!-- §3 YOGA MODERN -->
+<section class="section hidden" id="s-yoga-modern">
+  <div class="section-heading"><span class="num">§ 3</span>Yoga as Global Śāstra</div>
+  <h2 class="article-title">Modern Yoga — The Most Globally Diffused Indian Śāstric Discipline</h2>
+  <p>Of all the Indian śāstric disciplines, Yoga has achieved the most extraordinary global diffusion in the modern period. From a tradition transmitted within the guru-disciple relationship under strict conditions of initiation and ascetic qualification, Yoga — specifically <span class="iast">āsana</span> (posture practice) and <span class="iast">prāṇāyāma</span> (breath regulation) — has become a global physical and contemplative discipline practised by an estimated 300 million people worldwide. The process by which this transformation occurred — and what was preserved, what was adapted, and what was lost in the transmission — is one of the most consequential śāstric stories of the modern period.</p>
+
+  <div class="panel mod">
+    <h3>The Classical Yoga Śāstra — What Patañjali Actually Systematised</h3>
+    <p>The <span class="iast">Yoga Sūtras</span> of Patañjali (c. 400 CE) — 196 aphorisms in four chapters — is the foundational text of the classical Yoga darśana (one of the six orthodox systems examined in Part II). Its subject is precisely defined in the second sūtra:</p>
+    <div class="sanskrit-block">
+      योगश्चित्तवृत्तिनिरोधः ॥ १.२ ॥
+    </div>
+    <p class="gloss">"Yoga is the cessation of the modifications of the mind-stuff (citta)." — Yoga Sūtras I.2</p>
+    <p style="font-size:14.5px;margin-top:14px;">The eight limbs of Patañjali's aṣṭāṅga system — yama, niyama, āsana, prāṇāyāma, pratyāhāra, dhāraṇā, dhyāna, samādhi — form a systematically ordered path in which āsana (physical posture, described in a single sūtra: "sthirasukham āsanam" — "posture is stable and comfortable") is the third of eight steps, not its goal but its prerequisite. The classical Yoga system's goal is kaivalya — the isolation of pure awareness (puruṣa) from matter (prakṛti). What the modern world calls "Yoga" corresponds, in Patañjali's system, primarily to the third and fourth limbs of an eight-limb path.</p>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·21</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 21 · Transmission History</div>
+        <h3>T. Krishnamacharya — The Architect of Modern Postural Yoga</h3>
+        <div class="cs-sub">How one teacher in Mysore (c. 1925–1950) generated the three dominant global yoga lineages</div>
+      </div>
+    </div>
+    <p>Tirumalai Krishnamacharya (1888–1989) of Mysore is the single most important figure in the transmission of physical Yoga to the modern world. Trained in all six darśanas, in Āyurveda, and in the Vaiṣṇava devotional tradition, he taught a vigorous, systematised āsana practice at the Mysore Palace from the 1930s onward — and his students became the founders of the three most globally influential Yoga lineages:</p>
+    <div class="timeline" style="margin-top:18px;">
+      <div class="tl-item milestone">
+        <div class="tl-date">B.K.S. Iyengar · 1918–2014</div>
+        <div class="tl-title">Iyengar Yoga — Precision and Therapeutic Application</div>
+        <div class="tl-body">Krishnamacharya's brother-in-law. His <em>Light on Yoga</em> (1966) — the most influential Yoga book of the 20th century — systematised 200+ āsanas with detailed photographic instruction and therapeutic correlations. Developed the use of props (blocks, belts, chairs) to make āsana practice accessible to people of different physical conditions. Now practised in over 70 countries through the Iyengar Yoga Institute network.</div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-date">K. Pattabhi Jois · 1915–2009</div>
+        <div class="tl-title">Ashtanga Vinyasa Yoga — The Dynamic System</div>
+        <div class="tl-body">Developed the six-series Ashtanga Vinyasa system — a fixed sequence of āsanas linked by breath (vinyāsa) and internal locks (bandha), performed in the same order in every practice. Became the basis of Power Yoga and Vinyasa Yoga, and through these the dominant form of athletic yoga in Western countries. The Ashtanga system's serial structure — six sequences of increasing difficulty — is itself a śāstric systematisation: a graded curriculum with formal progression criteria.</div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-date">T.K.V. Desikachar · 1938–2016</div>
+        <div class="tl-title">Viniyoga — Individualised Therapeutic Yoga</div>
+        <div class="tl-body">Krishnamacharya's son. Developed the viniyoga approach — the adaptation of yoga practice to the individual practitioner's specific condition, constitution (Āyurvedic prakriti), and goals. Restored the integration of yoga with its philosophical and therapeutic roots; his <em>The Heart of Yoga</em> (1995) is the most faithful modern account of Krishnamacharya's complete teaching, including its Vedāntic and devotional dimensions.</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:4px;">
+      <div class="cl-head">The Śāstric Analysis</div>
+      <p style="font-size:14.5px;">The three lineages from Krishnamacharya demonstrate the śāstric tradition's characteristic mode of transmission and divergence: a single master produces multiple students who each systematise different aspects of the teaching, generating distinct but related schools. The divergence between Iyengar's alignment-precision, Jois's sequence-integrity, and Desikachar's individual-adaptation mirrors the divergence of Vedāntic schools from the Brahmasūtras — each a genuine and internally consistent development of the source teaching, each claiming priority. This is śāstric transmission operating exactly as it has for three millennia.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">3.1 What Globalisation Preserved, What It Lost, What It Created</h3>
+  <div class="grid3">
+    <div class="panel mod" style="border-left-color:var(--mod);">
+      <h3 style="color:var(--mod-bright);">Preserved</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The āsana and prāṇāyāma practices themselves, at a level of technical precision that would have been impossible without the guru-transmission chain. The eight-limb framework as a conceptual reference. The therapeutic application of practice to specific conditions (Āyurvedic correlations). The emphasis on the breath as the primary operative element of practice.</p>
+    </div>
+    <div class="panel" style="border-left:3px solid var(--crimson-bright);">
+      <h3 style="color:var(--crimson-bright);">Lost or Marginalised</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The dīkṣā-initiation structure; the Patañjalian goal of kaivalya (liberation of puruṣa from prakṛti); the Sāṃkhya philosophical framework from which āsana derives its meaning; the yama and niyama (ethical foundations) as prerequisites rather than supplements; the guru as spiritual authority rather than fitness instructor.</p>
+    </div>
+    <div class="panel" style="border-left:3px solid var(--teal-bright);">
+      <h3 style="color:var(--teal-bright);">Created (New Śāstra)</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The integration of Yoga with modern physiotherapy, anatomy, and sports science — generating a new evidential basis for the tradition's therapeutic claims. The neuroscience of meditation (now a flourishing research field directly generated by the global Yoga transmission). Yoga as a clinical intervention for depression, PTSD, chronic pain — applications the tradition did not itself foresee but which extend the tradition's therapeutic śāstra in new directions.</p>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-neovedanta')">← §2 Neo-Vedānta</span>
+    <span class="fn-btn" onclick="showSection('s-pathashala')">Next: §4 Pathāśālā →</span>
+  </div>
+</section>
+
+<!-- §4 PATHASHALA -->
+<section class="section hidden" id="s-pathashala">
+  <div class="section-heading"><span class="num">§ 4</span>The Pathāśālā System</div>
+  <h2 class="article-title">The Pathāśālā Network — Unbroken Oral Transmission in the Modern World</h2>
+  <p>While the global drama of Neo-Vedānta and modern Yoga unfolded on the world stage, a quieter but equally consequential process was occurring in the villages and towns of India: the continuation, against enormous economic and social pressure, of the traditional <span class="iast">pathāśālā</span> — the Sanskrit residential school in which the master-disciple transmission of the śāstric curriculum is maintained in its classical form. The pathāśālā system is the living institutional backbone of the śāstric tradition; without it, the tradition would be a body of texts rather than a living practice of knowledge.</p>
+
+  <div class="panel living">
+    <h3>What a Pathāśālā Actually Transmits</h3>
+    <p>A traditional pathāśālā is not a school in the modern sense — it is a residential learning community in which students (typically entering between ages 8 and 14) live with and serve the master, memorise and recite primary texts, study the śāstric commentary tradition, and gradually are equipped to carry the tradition forward. The curriculum varies by regional tradition, but a fully traditional curriculum covers:</p>
+    <table class="chron" style="margin-top:12px;">
+      <thead><tr><th style="width:22%">Level</th><th style="width:30%">Primary Content</th><th>Duration</th><th>śāstric Tradition</th></tr></thead>
+      <tbody>
+        <tr><td class="shastra">Foundation</td><td>Sandhi and samāsa rules (Pāṇinian grammar); the Laghu-siddhānta-kaumudī (grammatical primer); recitation of the Amarakośa (lexicon); basic Vedic recitation in the relevant śākhā</td><td class="era">3–4 years</td><td class="note">Vyākaraṇa (Part II §1) and Vedic recitation in the pāṭha system (Part I §2) — the two foundational śāstras of all further learning</td></tr>
+        <tr><td class="shastra">Intermediate</td><td>Aṣṭādhyāyī itself; primary Smṛti texts; introduction to the Bhagavad Gītā with commentary; Logic (Tarkasaṃgraha and increasingly Navya-Nyāya basics)</td><td class="era">3–4 years</td><td class="note">Formal introduction to multiple śāstric traditions in sequence; beginning of the commentary reading tradition</td></tr>
+        <tr><td class="shastra">Advanced</td><td>Specialisation in one of: Mīmāṃsā, Vedānta, Vyākaraṇa, Nyāya-Vaiśeṣika, Sāṃkhya-Yoga, or Dharmaśāstra; at the highest levels, full Navya-Nyāya technical apparatus</td><td class="era">4–6 years</td><td class="note">The tradition's own internal differentiation by darśana is reflected in the pathāśālā specialisation structure</td></tr>
+        <tr><td class="shastra">Specialised / Āgamic</td><td>Āgamic recitation and ritual procedure (for temple-priest traditions); Carnatic musicology and rāga theory; Nāṭyaśāstra and classical dance; Jyotiṣa (astronomy-astrology)</td><td class="era">Variable</td><td class="note">The living Āgamic, musical, and performative śāstras — maintained entirely through residential transmission outside the formal academic system</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·22</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 22 · Living Transmission</div>
+        <h3>The Carnatic Musicological Tradition — Śāstra as Living Performance Science</h3>
+        <div class="cs-sub">Venkatamakhin's 72 Mēḷakarta system as a continuously inhabited śāstric framework</div>
+      </div>
+    </div>
+    <p>The Carnatic music tradition — one of the two principal classical music systems of India — is governed by a śāstric framework whose foundational text is Venkatamakhin's <span class="iast">Caturdaṇḍiprakāśikā</span> (c. 1620 CE), which systematised the 72-mēḷakarta (parent-rāga) system that organises the entire corpus of Carnatic rāgas into a mathematically complete taxonomy.</p>
+    <div class="callout gold">
+      <div class="cl-head">The 72 Mēḷakarta — A Mathematical Śāstra</div>
+      <p style="font-size:14.5px;">Venkatamakhin's system is a combinatorial derivation: given the seven notes of the octave (svaras) in their movable forms, and the requirement that each mēḷakarta contain exactly seven distinct pitches (one from each saptasthāna level), the possible parent scales number precisely 72. This is not an approximation or a convenient number — it is an exhaustive mathematical derivation, and the 72 mēḷakartas include both the scales in practical use and those that are theoretically possible but rarely performed. The system is organised into 12 cakras (groups of six) with a consistent internal structure, allowing any mēḷakarta to be identified by a two-digit number using the <span class="iast">katapayādi</span> encoding system — the same system used in astronomical calculations.</p>
+    </div>
+    <p>What makes the mēḷakarta system a living śāstra — rather than a historical classification — is that it continues to generate new rāgas in the 21st century. Composers working within the Carnatic tradition use the mēḷakarta framework to identify unexplored or underexplored parent-rāga territories and compose new rāgas from them. The śāstra is generative, not merely taxonomic: it creates the space within which musical creativity operates, rather than merely cataloguing what has already been created. This is the śāstric tradition at its most alive — a systematic framework that enables new creation rather than merely preserving past creation.</p>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-yoga-modern')">← §3 Yoga</span>
+    <span class="fn-btn" onclick="showSection('s-western')">Next: §5 Western Encounter →</span>
+  </div>
+</section>
+
+<!-- §5 WESTERN ENCOUNTER -->
+<section class="section hidden" id="s-western">
+  <div class="section-heading"><span class="num">§ 5</span>Western Encounter</div>
+  <h2 class="article-title">Indology, Phenomenology and Dialogue — The Western Scholarly Encounter with the Śāstras</h2>
+  <p>The Western scholarly engagement with the Sanskrit śāstric tradition — Indology, comparative religion, philosophy of religion, and phenomenology of religion — constitutes one of the most complex intellectual histories of the modern period. Beginning with the Orientalist project of the 18th and 19th centuries (§1), the Western encounter developed across the 20th century into a genuine philosophical dialogue of increasing sophistication, while simultaneously generating powerful critiques of its own methodological assumptions.</p>
+
+  <div class="panel western">
+    <h3>From Orientalism to Dialogue — Four Phases of Western Engagement</h3>
+    <div class="timeline" style="margin-top:14px;">
+      <div class="tl-item milestone">
+        <div class="tl-date">Phase 1 · c. 1750–1880</div>
+        <div class="tl-title">Classic Orientalism — The Archive Phase</div>
+        <div class="tl-body">William Jones, Max Müller, Monier-Williams. The primary project is textual: translate, edit, classify. The śāstras are treated as historical documents — objects of philological analysis rather than living knowledge systems. The comparative religion project (Müller's "Sacred Books of the East") is simultaneously the most useful archival project and the most distorting interpretive frame: by treating Indian texts as analogues of Christian scripture, it systematically imported Christian theological categories into the analysis.</div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-date">Phase 2 · c. 1880–1950</div>
+        <div class="tl-title">Philosophical Reception — Schopenhauer to Wittgenstein</div>
+        <div class="tl-body">The philosophical impact of Vedāntic and Buddhist thought on European philosophy begins with Schopenhauer's explicit acknowledgment of the Upaniṣads as the primary influence on his concept of the Will-as-Brahman (a mapping he acknowledged as imperfect). Nietzsche, through Schopenhauer; early Wittgenstein's ineffabilism parallels certain Advaita positions; Heidegger's later work on the "clearing" of Being and the limits of conceptual thought shows structural parallels with both Advaita māyā doctrine and Zen that several scholars have explored in detail.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Phase 3 · c. 1950–1990</div>
+        <div class="tl-title">Phenomenology and Comparative Philosophy</div>
+        <div class="tl-body">The generation of scholars trained in both Western phenomenology and Sanskrit — Mircea Eliade (on Yoga), J.L. Mehta (on Heidegger and Sanskrit tradition), Raimon Panikkar (on Vedic cosmology), and above all B.K. Matilal (on Nyāya and logic) — begins the transition from translation to genuine philosophical dialogue. Matilal's work is the watershed: for the first time, a scholar fully conversant in both the Sanskrit philosophical tradition and Anglo-American analytic philosophy is able to demonstrate that Indian philosophical positions are not analogues of Western positions but distinct positions that enrich the global philosophical conversation.</div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-date">Phase 4 · c. 1990–Present</div>
+        <div class="tl-title">Post-Colonial Critique and Renewed Dialogue</div>
+        <div class="tl-body">Sheldon Pollock's critique of the "death of Sanskrit" (2001) and the responses it generated; Wilhelm Halbfass's <em>India and Europe</em> (1988) as the most comprehensive account of the encounter; the emergence of "comparative philosophy" as a discipline; the neuroscience of meditation as a new empirical ground for dialogue between the yogic tradition and Western science. The current moment is characterised by simultaneous critique of colonialist distortion and genuine philosophical dialogue at higher levels of mutual precision than any previous generation achieved.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·23</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 23 · Productive Dialogue</div>
+        <h3>B.K. Matilal and the Nyāya–Analytic Philosophy Encounter</h3>
+        <div class="cs-sub">How one scholar demonstrated that Indian philosophy is philosophy — not religion, not spirituality, but rigorous systematic argument</div>
+      </div>
+    </div>
+    <p>Bimal Krishna Matilal (1935–1991), Spalding Professor of Eastern Religions and Ethics at Oxford, is the pivotal figure in the transition from Indological scholarship (which studies Sanskrit texts as historical documents) to comparative philosophy (which engages Indian philosophical positions as positions). His key works — <em>Epistemology, Logic and Grammar in Indian Philosophical Analysis</em> (1971), <em>Perception</em> (1986), and <em>The Word and the World</em> (1990) — demonstrate that Nyāya epistemology, Navya-Nyāya logic, and the Mīmāṃsā philosophy of language are not merely historical curiosities but rigorous systematic positions that engage with and extend the same problems that Frege, Russell, and Quine address in Western analytic philosophy.</p>
+    <div class="callout teal">
+      <div class="cl-head">The Methodological Achievement</div>
+      <p style="font-size:14.5px;">Matilal's achievement is not merely to show that Indian philosophy is "as good as" Western philosophy — that framing is itself a concession to the colonial hierarchy of intellectual value. His achievement is to demonstrate that specific Indian philosophical positions — the Nyāya theory of perceptual error, the Navya-Nyāya account of relational structure, the Mīmāṃsā theory of the eternality of sound — are irreducible to any Western philosophical position and represent genuine additions to the global philosophical inventory. The dialogue he initiated — between Sanskrit philosophical tradition and analytic philosophy — continues in the work of scholars like Mark Siderits, Jay Garfield, and Jonardon Ganeri, and represents the most philosophically productive cross-cultural intellectual exchange currently ongoing in academic philosophy.</p>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-pathashala')">← §4 Pathāśālā</span>
+    <span class="fn-btn" onclick="showSection('s-living')">Next: §6 Living Traditions →</span>
+  </div>
+</section>
+
+<!-- §6 LIVING -->
+<section class="section hidden" id="s-living">
+  <div class="section-heading"><span class="num">§ 6</span>Living Traditions</div>
+  <h2 class="article-title">The Śāstras in Contemporary Practice — A Living Inventory</h2>
+  <p>The śāstric tradition is not an archive. Across multiple domains, the systematic knowledge codified in the śāstras examined in Parts I–IV continues to be practised, taught, contested, refined, and — in specific cases — still being actively produced. This section offers a living inventory: a domain-by-domain account of where the śāstric tradition is most vitally present in contemporary practice.</p>
+
+  <div class="grid2">
+    <div class="panel living">
+      <h3>Carnatic Music and Bharatanāṭyam</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The Carnatic music tradition and the Bharatanāṭyam classical dance form are the most publicly visible living śāstric traditions in contemporary India. Both are governed by śāstric frameworks — the 72-mēḷakarta system for Carnatic music (§4), the Nāṭyaśāstra-derived abhinaya system for Bharatanāṭyam — that are actively taught in gurukulam settings and institutionalised in universities and performing arts academies. Both traditions continue to generate new compositions (kritis, varṇams, padam, jāvali in music; new choreographic works in dance) within the śāstric framework. The tradition is living in the most direct sense: it produces new work.</p>
+    </div>
+    <div class="panel living">
+      <h3>Temple Ritual — The Āgamas in Daily Practice</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The great South Indian temple complexes — Tirumala-Tirupati, Śrīraṅgam, Madurai Mīnākṣī, Chidambaram, Kāñcīpuram — conduct daily worship (ṣaḍkāla-pūjā) according to the Āgamic rites examined in Part III. The priests who perform these rites are trained in residential Āgamic pathāśālās; the texts they recite are the Āgamic Saṃhitās; the disputes about correct ritual procedure are adjudicated by reference to the Āgamic śāstras and, increasingly, by Indian courts. The Āgamas are not historical texts — they are the operational specifications of the world's most visited religious institutions.</p>
+    </div>
+    <div class="panel western">
+      <h3>Sanskrit Linguistics and Modern Language Science</h3>
+      <p style="font-size:14px;color:var(--text-dim);">Pāṇini's Aṣṭādhyāyī remains an active object of scholarly engagement in computational linguistics, generative grammar, and formal language theory. The connection between Pāṇinian grammar and formal language theory (established by Frits Staal, extended by Huet, Kiparsky, and others) is not merely historical: the Aṣṭādhyāyī's rule-ordering, meta-rule (paribhāṣā) system, and the Śivasūtras' phonological encoding have been shown to employ formal devices — ordered rewriting rules, bracket notation, context-sensitive grammars — that are isomorphic to concepts in formal language theory developed independently in the 20th century.</p>
+    </div>
+    <div class="panel mod">
+      <h3>Āyurveda — The Medical Śāstra</h3>
+      <p style="font-size:14px;color:var(--text-dim);">The Āyurvedic medical tradition — founded on the Caraka Saṃhitā, Suśruta Saṃhitā, and Aṣṭāṅgahṛdayam — is the most institutionalised of the living śāstric traditions: a network of BAMS (Bachelor of Āyurvedic Medicine and Surgery) universities, government-recognised hospitals, and a global market of Āyurvedic products constitutes a multi-billion dollar industry. The tension between traditional śāstric practice (nāḍī-parīkṣā diagnosis, individualized doṣa-based treatment, classical formulations) and modern evidence-based medicine is the defining intellectual challenge of contemporary Āyurveda — and producing some of the most interesting cross-traditional research currently occurring in medical science.</p>
+    </div>
+  </div>
+
+  <div class="panel case-study">
+    <div class="cs-header">
+      <div class="cs-num">CS·24</div>
+      <div class="cs-meta">
+        <div class="cs-label">Case Study 24 · Contemporary Scholarship</div>
+        <h3>The Śrīvidyā Tradition in the 21st Century — Continuity and Innovation</h3>
+        <div class="cs-sub">How the Lalitā Sahasranāma and Śrī Yantra tradition remains a site of active scholarly and contemplative production</div>
+      </div>
+    </div>
+    <p>The Śrīvidyā tradition examined in Part III (§3) — the Śākta Tantric school centred on the Lalitā/Tripurasundarī worship with the Śrī Yantra, the Pañcadaśī mantra, and the navaāvaraṇa pūjā — is among the most actively practised and most actively studied of the Tantric śāstric traditions in the contemporary period. Several convergent processes are occurring simultaneously:</p>
+    <div class="grid3">
+      <div class="panel" style="background:rgba(156,61,170,0.05);border-color:rgba(156,61,170,0.3);">
+        <div style="font-family:'Cinzel';font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#cc78dd;margin-bottom:8px;">Living Practice</div>
+        <p style="font-size:13.5px;color:var(--text-dim);">The Śaṅkarācāryas of the four pīṭhas (especially Śṛṅgeri and Kāñcī) maintain Śrīvidyā as a living initiation tradition. The navaāvaraṇa pūjā is performed daily in thousands of homes and temples across South India and in diaspora communities worldwide. The Lalitā Sahasranāma — the thousand-name hymn to the Goddess — is recited daily by millions of practitioners, representing the largest daily ritual deployment of a single Sanskrit text in the world.</p>
+      </div>
+      <div class="panel" style="background:rgba(74,61,170,0.05);border-color:rgba(74,61,170,0.3);">
+        <div style="font-family:'Cinzel';font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--jade-bright);margin-bottom:8px;">Academic Scholarship</div>
+        <p style="font-size:13.5px;color:var(--text-dim);">Douglas Brooks' <em>Auspicious Wisdom</em> (1992), Padoux's decades of work on mantra theory, Sanderson's comprehensive mapping of the Śaiva and Śākta Āgamic corpus, and the ongoing MUKTABODHA digitisation project (making Tantric manuscripts accessible online) represent a flourishing of Western academic engagement with the Śrīvidyā tradition that is producing the most detailed historical and philosophical accounts of the tradition ever written — often in dialogue with initiated practitioners.</p>
+      </div>
+      <div class="panel" style="background:rgba(42,122,90,0.05);border-color:rgba(42,122,90,0.3);">
+        <div style="font-family:'Cinzel';font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mod-bright);margin-bottom:8px;">Digital Transmission</div>
+        <p style="font-size:13.5px;color:var(--text-dim);">Online platforms — YouTube, podcast networks, dedicated websites — are transmitting Śrīvidyā teaching to audiences who would previously have had no access to it. This democratisation of access replicates, in a new medium, the Neo-Vedānta move of removing the dīkṣā-prerequisite from public teaching. The tension between the tradition's insistence on initiation and the open-access ethos of digital culture is one of the defining tensions in contemporary Śrīvidyā transmission.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-western')">← §5 Western</span>
+    <span class="fn-btn" onclick="showSection('s-synthesis5')">Next: §7 Open Questions →</span>
+  </div>
+</section>
+
+<!-- §7 OPEN QUESTIONS -->
+<section class="section hidden" id="s-synthesis5">
+  <div class="section-heading"><span class="num">§ 7</span>The Unfinished Śāstra</div>
+  <h2 class="article-title">What Remains Open — The Śāstric Tradition's Unfinished Projects</h2>
+  <p>The śāstric tradition as examined across five parts of this series is not a completed monument but an ongoing project. Across multiple domains, specific questions remain genuinely open — questions that the tradition's own internal logic generates, that existing śāstras do not yet fully answer, and that are being actively worked on by scholars and practitioners inside and outside the tradition. The series concludes by identifying five such open questions.</p>
+
+  <div class="panel research">
+    <h3>Five Open Questions in the Living Śāstric Tradition</h3>
+
+    <h4 class="sub-sub" style="margin-top:18px;">1. The Consciousness Question — Ātman, Puruṣa, and the Hard Problem</h4>
+    <p>The Indian philosophical tradition's accounts of consciousness — Advaita's pure self-luminous awareness (cit), Sāṃkhya's witnessing puruṣa, Kashmir Śaivism's self-recognising śiva-consciousness — are the most technically developed pre-modern frameworks for the analysis of first-person experience in any philosophical tradition. David Chalmers' "hard problem of consciousness" (1995) — the question of why and how physical processes give rise to subjective experience — is a question to which the Indian tradition has been addressing itself for two millennia under different names. The dialogue between Indian philosophical accounts of consciousness and contemporary philosophy of mind and neuroscience is not yet complete — neither side has yet fully assimilated what the other offers.</p>
+
+    <h4 class="sub-sub">2. The Sphoṭa Question — Language, Meaning and Cognitive Science</h4>
+    <p>The Mīmāṃsā–Vyākaraṇa debate on the nature of linguistic meaning — specifically the Bhartṛhari–Mīmāṃsaka disagreement about whether the sentence-meaning (sphoṭa) is prior to or derived from word-meanings — engages questions that are alive in contemporary cognitive science and philosophy of language: the relationship between syntax and semantics, between phonological form and meaning, between language and thought. The sphoṭa theory, which holds that the sentence-meaning is a holistic unit apprehended as a flash of understanding (pratibhā) rather than a compositional assembly of word-meanings, has specific implications for theories of language comprehension that have not yet been fully explored in cognitive science.</p>
+
+    <h4 class="sub-sub">3. The Rasa Question — Aesthetic Experience and Phenomenology</h4>
+    <p>Abhinavagupta's theory of rasa (Part III, §6) — specifically his account of how aesthetic experience produces a state of "generalised" emotion that transcends the specificity of personal feeling and produces a quasi-contemplative awareness (ānandacitta) — is the most sophisticated pre-modern phenomenology of aesthetic experience available. Its relationship to contemporary neuroscientific accounts of aesthetic experience (Semir Zeki's neuroaesthetics, Ramachandran's "peak shift" principle), to phenomenological aesthetics (Merleau-Ponty on the body in art, Gadamer on the hermeneutics of art-encounter), and to the cognitive science of music (David Huron's ITPRA theory) has barely been explored. The dialogue between the Indian aesthetic tradition and contemporary aesthetics is in its earliest phases.</p>
+
+    <h4 class="sub-sub">4. The Āgama Question — Ritual Efficacy and Cognitive Science</h4>
+    <p>The Āgamic śāstras describe a complex system of ritual practice — nyāsa, mudrā, maṇḍala construction, mantra recitation, visualisation — that is claimed to have specific psychological and soteriological effects. The cognitive science of ritual (Harvey Whitehouse's modes of religiosity theory; the cognitive science of religion more broadly) offers analytical tools for examining these claims empirically. Specific questions — the role of embodied practice in restructuring cognitive states, the neurological correlates of mantra recitation, the phenomenology of deep visualisation — are accessible to empirical investigation. The dialogue between Āgamic śāstra and cognitive science of religion is one of the most productive potential research programs currently at an early stage.</p>
+
+    <h4 class="sub-sub">5. The Mātṛkā Question — Phonology, Embodiment and Neuroscience</h4>
+    <p>The mātṛkānyāsa tradition examined in Part III (§5) — the mapping of Sanskrit phonemes onto the practitioner's body — encodes, in ritual form, a claim about the relationship between phonological structure and somatic experience. The emerging field of embodied cognition, combined with phonological neuroscience (the study of how speech sounds are represented in the body's proprioceptive and motor systems), creates a new empirical framework within which the mātṛkā tradition's implicit claims about the bodily basis of sound-cognition can be examined. This is perhaps the domain in which the gap between śāstric precision and contemporary empirical science is smallest — and where genuine new śāstra may emerge from the encounter.</p>
+  </div>
+
+  <div class="callout">
+    <div class="cl-head">The Tradition's Continuing Generativity</div>
+    <p style="font-size:15.5px;">The five open questions above are not questions that the tradition has failed to answer — they are questions that the tradition has been addressing for centuries but that have not yet reached closure, partly because the tradition itself has evolved in its engagement with them, and partly because new empirical and conceptual tools now available make more precise formulations possible. The śāstric tradition's deepest characteristic — the capacity for productive formal disagreement, for the generation of new questions from the encounter with existing answers — is not a feature of its past. It is what the tradition is, and what it will continue to be as long as it has practitioners capable of bringing its full methodological rigour to bear on the problems of their own time.</p>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-living')">← §6 Living</span>
+    <span class="fn-btn" onclick="showSection('s-chrono5')">Next: §8 Chronology &amp; Conclusion →</span>
+  </div>
+</section>
+
+<!-- §8 CHRONOLOGY AND SERIES CONCLUSION -->
+<section class="section hidden" id="s-chrono5">
+  <div class="section-heading"><span class="num">§ 8</span>Master Chronology V · Series Conclusion</div>
+  <h2 class="article-title">Reference Chronology V: The Modern Period (c. 1750 CE – Present)</h2>
+
+  <div class="panel">
+    <h3>Modern &amp; Contemporary Period Timeline</h3>
+    <table class="chron">
+      <thead><tr><th style="width:15%">Date</th><th style="width:28%">Figure / Text / Event</th><th style="width:18%">Tradition</th><th>Significance</th></tr></thead>
+      <tbody>
+        <tr><td class="era">1784 CE</td><td class="shastra">William Jones — Founding of Asiatic Society; Sanskrit–Indo-European linguistic connection announced</td><td><span class="tag west">Indology</span></td><td class="note">Inaugurates the Western scholarly study of Sanskrit as a primary object of linguistic science; the discovery of the Indo-European family is the most consequential linguistic discovery of the modern period</td></tr>
+        <tr><td class="era">1828 CE</td><td class="shastra">Rammohun Roy — Brahmo Samāj founded; Vedāntic reformism begins</td><td><span class="tag neo">Neo-Vedānta</span></td><td class="note">First systematic Indian response to colonial encounter from within the śāstric tradition; apologetic śāstra in a new medium; defines the terms of modern Hindu reform for the next century</td></tr>
+        <tr><td class="era">1875 CE</td><td class="shastra">Dayananda Sarasvatī — Ārya Samāj founded; Satyārtha Prakāś published</td><td><span class="tag neo">Reform</span></td><td class="note">The purificatory response to colonial encounter — return to Vedic authority alone; most socially reformist Hindu organisation of the period; profound influence on Indian nationalism</td></tr>
+        <tr><td class="era">1879–1910 CE</td><td class="shastra">Max Müller — Sacred Books of the East (50 vols.)</td><td><span class="tag west">Indology</span></td><td class="note">The most comprehensive English-language edition of Indian primary texts; simultaneously the greatest single act of archival preservation and the most systematic imposition of comparative-religion interpretive frameworks onto the tradition</td></tr>
+        <tr><td class="era">1893 CE</td><td class="shastra">Swami Vivekananda — Chicago Parliament of Religions address</td><td><span class="tag neo">Neo-Vedānta</span></td><td class="note">The single most consequential public event in the global transmission of Vedāntic thought; Vivekananda's formulation of Advaita as universal religion, karma yoga as social service, and the four-path framework becomes the defining Neo-Vedānta template</td></tr>
+        <tr><td class="era">1920s–1950s CE</td><td class="shastra">T. Krishnamacharya — Mysore Palace Yoga school; training of Iyengar, Jois, Desikachar</td><td><span class="tag yoga">Yoga</span></td><td class="note">The fountainhead of modern global Yoga; the three lineages generated from Krishnamacharya's teaching represent the world's most widely practised living śāstric discipline</td></tr>
+        <tr><td class="era">1939–1940 CE</td><td class="shastra">Śrī Aurobindo — The Life Divine published (completed form)</td><td><span class="tag neo">Integral Vedānta</span></td><td class="note">The most philosophically ambitious Neo-Vedānta synthesis; evolutionary cosmology integrated with Advaita non-dualism; supramental consciousness as the goal of cosmic evolution; remains the most original modern Vedāntic philosophical achievement</td></tr>
+        <tr><td class="era">1966 CE</td><td class="shastra">B.K.S. Iyengar — Light on Yoga published</td><td><span class="tag yoga">Yoga</span></td><td class="note">The most influential Yoga text of the 20th century; the first systematic photographic documentation of the āsana tradition; makes the practice accessible outside the guru-disciple relationship at scale for the first time</td></tr>
+        <tr><td class="era">1968–1991 CE</td><td class="shastra">B.K. Matilal — major works on Nyāya, logic, and comparative philosophy</td><td><span class="tag west">Comparative Philosophy</span></td><td class="note">The watershed in Western philosophical engagement with the Sanskrit tradition; demonstrates that Indian philosophical positions are irreducible to Western analogues and represent genuine additions to the global philosophical inventory</td></tr>
+        <tr><td class="era">1988 CE</td><td class="shastra">Wilhelm Halbfass — India and Europe: An Essay in Understanding</td><td><span class="tag west">Philosophy</span></td><td class="note">The most comprehensive historical account of the India–Europe intellectual encounter; establishes the framework within which all subsequent cross-cultural philosophical dialogue in this domain proceeds</td></tr>
+        <tr><td class="era">2001 CE</td><td class="shastra">Sheldon Pollock — "The Death of Sanskrit" (Critical Inquiry)</td><td><span class="tag west">Critique</span></td><td class="note">The most provocative modern assessment of the tradition's vitality; argues Sanskrit's productive capacity effectively ended c. 1800 CE; generates extensive scholarly response that forces a more precise account of what "living tradition" means</td></tr>
+        <tr><td class="era">2010s–Present CE</td><td class="shastra">MUKTABODHA digitisation project; neuroscience of meditation research programs; global Yoga research institutes</td><td><span class="tag living">Contemporary</span></td><td class="note">The simultaneous archival, empirical, and practical engagement with the tradition at the beginning of the 21st century; the dialogue between śāstric precision and modern empirical science at its most productive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SERIES CONCLUSION -->
+  <div class="section-heading" style="margin-top:48px;"><span class="num">CODA</span>Series Conclusion</div>
+  <h2 class="article-title">शास्त्रोद्भवः — What the Series Has Argued</h2>
+  <p>Across five parts and thirty-five sections, this series has traced the birth, development, internal diversification, cross-traditional encounter, and contemporary vitality of the Indian śāstric tradition. The central argument — stated at the outset and now demonstrated across the full range of the evidence — can be precisely formulated:</p>
+
+  <blockquote>
+    The śāstric tradition is not a body of sacred texts to be preserved and transmitted unchanged. It is a <em>method</em> — the method of systematic, rule-governed, argued, complete specification of a domain of human knowledge — that has proven robust enough to generate new knowledge across every domain it has entered, and that remains, in multiple specific domains, the most accurate available description of its subject matter.
+  </blockquote>
+
+  <p>The evidence for this claim is the body of content examined in this series: Pāṇini's grammar, which remains the most formally precise description of Sanskrit morphophonology produced by any tradition; the Nāṭyaśāstra's theory of rasa, which remains the most comprehensive account of aesthetic experience in any pre-modern tradition; Abhinavagupta's Kashmir Śaiva synthesis, which remains the most complete integration of consciousness-philosophy with cosmology, aesthetics, and ritual in any premodern civilisation; the 72-mēḷakarta system of Carnatic music, which remains the operative framework within which new compositions are being created today; and the Yoga tradition's account of embodied contemplative practice, which is generating new empirical research in neuroscience that will continue for decades.</p>
+
+  <div class="series-complete">
+    <div class="sc-label">शास्त्रोद्भवः · Five-Part Series · Complete</div>
+    <h3>The Birth and Evolution of the Śāstras</h3>
+    <p>From the Vedic phonologists to the living pathāśālā; from Pāṇini's Aṣṭādhyāyī to the neuroscience of meditation — a continuous tradition of systematic thought whose productive capacity is not exhausted.</p>
+    <div class="series-links">
+      <a href="shastra-series-part1.html">Part I · Origins &amp; Vedic Śāstras</a>
+      <a href="shastra-series-part2.html">Part II · Classical Śāstras</a>
+      <a href="shastra-series-part3.html">Part III · Tantric &amp; Āgamic Śāstras</a>
+      <a href="shastra-series-part4.html">Part IV · Medieval Synthesis</a>
+      <a href="shastra-series-part5.html">Part V · Modern Continuity</a>
+    </div>
+  </div>
+
+  <div class="footnotes">
+    <h4>Selected Bibliography · Part V</h4>
+    <div class="fn-item"><span class="fn-num">[1]</span>Vivekananda, Swami. (1907). <em>The Complete Works of Swami Vivekananda</em>. 9 vols. Advaita Ashrama, Calcutta. The primary source for Neo-Vedānta's formative expression.</div>
+    <div class="fn-item"><span class="fn-num">[2]</span>Aurobindo, Sri. (1940). <em>The Life Divine</em>. Sri Aurobindo Ashram, Pondicherry. The most philosophically ambitious modern Vedāntic synthesis.</div>
+    <div class="fn-item"><span class="fn-num">[3]</span>Iyengar, B.K.S. (1966). <em>Light on Yoga</em>. George Allen &amp; Unwin. The most influential modern Yoga text.</div>
+    <div class="fn-item"><span class="fn-num">[4]</span>Matilal, B.K. (1986). <em>Perception: An Essay on Classical Indian Theories of Knowledge</em>. Oxford: Clarendon Press. The definitive philosophical engagement with Nyāya epistemology from a comparative perspective.</div>
+    <div class="fn-item"><span class="fn-num">[5]</span>Halbfass, W. (1988). <em>India and Europe: An Essay in Understanding</em>. Albany: SUNY Press. The essential account of the intellectual encounter between the two traditions.</div>
+    <div class="fn-item"><span class="fn-num">[6]</span>Pollock, S. (2001). "The Death of Sanskrit." <em>Comparative Studies in Society and History</em> 43(2): 392–426. The most discussed modern assessment of Sanskrit's contemporary vitality — and its most productive provocation.</div>
+    <div class="fn-item"><span class="fn-num">[7]</span>Ganeri, J. (2011). <em>The Lost Age of Reason: Philosophy in Early Modern India 1450–1700</em>. Oxford University Press. Essential for the transition between medieval and modern śāstric traditions.</div>
+    <div class="fn-item"><span class="fn-num">[8]</span>Singleton, M. (2010). <em>Yoga Body: The Origins of Modern Posture Practice</em>. Oxford University Press. The most rigorous historical account of the transition from classical to modern Yoga.</div>
+  </div>
+
+  <div class="footer-nav">
+    <span class="fn-btn" onclick="showSection('s-synthesis5')">← §7 Open Questions</span>
+    <a class="fn-btn" href="shastra-series-part1.html">Return to Part I: Origins →</a>
+  </div>
+</section>
+
+</div>
+</main>
+</div>
+<button class="menu-toggle" id="menuToggle">☰</button>
+<script>
+const navlinks=document.querySelectorAll('.navlink');
+const tabbtns=document.querySelectorAll('.tabbtn');
+const sections=document.querySelectorAll('.section');
+const crumb=document.getElementById('crumb');
+function showSection(id){
+  sections.forEach(s=>s.classList.toggle('hidden',s.id!==id));
+  navlinks.forEach(l=>l.classList.toggle('active',l.dataset.target===id));
+  tabbtns.forEach(t=>t.classList.toggle('active',t.dataset.target===id));
+  const activeTab=document.querySelector('.tabbtn[data-target="'+id+'"]');
+  if(activeTab)crumb.textContent=activeTab.textContent;
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('sidebar').classList.remove('open');
+  history.replaceState(null,'','#'+id);
+  if(activeTab)activeTab.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+}
+navlinks.forEach(l=>l.addEventListener('click',()=>showSection(l.dataset.target)));
+tabbtns.forEach(t=>t.addEventListener('click',()=>showSection(t.dataset.target)));
+document.getElementById('menuToggle').addEventListener('click',()=>{document.getElementById('sidebar').classList.toggle('open');});
+window.addEventListener('DOMContentLoaded',()=>{
+  const hash=location.hash.replace('#','');
+  showSection(hash&&document.getElementById(hash)?hash:'s-abstract5');
+});
+</script>
+</body>
+</html>
